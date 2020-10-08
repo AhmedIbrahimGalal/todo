@@ -1,0 +1,43 @@
+<div class="edit">
+  <form>
+    <div class="userpic">
+      <label for="userpic" class="labelImg">
+        <img
+          src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+          alt="userpic"
+          width="150px"
+          height="150px"
+        />
+        <label for="userpic">تغيير</label>
+      </label>
+      <input
+        type="file"
+        accept="image/*"
+        id="userpic"
+        name="userpic"
+        hidden
+        #file
+      />
+    </div>
+    <div class="userInfo" dir="rtl">
+      <div class="ui-fluid p-formgrid p-grid">
+        <div class="p-field p-col-12 p-md-6">
+          <label for="username">الأسم</label>
+          <input id="username" type="text" pInputText />
+        </div>
+        <br />
+        <div class="p-field p-col-12 p-md-3">
+          <label for="password">الرقم السري</label>
+          <input inputId="password" type="password" pPassword />
+        </div>
+        <br />
+        <div class="p-field">
+          <label for="birthdate">تاريخ الميلاد</label>
+          <p-inputMask inputId="birthdate"  mask="99/99/9999" placeholder="dd/mm/yyyy"></p-inputMask>
+      </div>
+      </div>
+    </div>
+    <br>
+    <button style="width: 100%;font-size: 18px;" pButton type="submit" class="ui-button-success ui-button-rounded" label="حفظ التغيرات"></button>
+  </form>
+</div>

@@ -1,0 +1,113 @@
+<div class="tasklist">
+
+  <div *ngIf="tasklist == null" style="display: flex; flex-direction: column;align-items: center;">
+    <br>
+    <span
+
+    >لا يوجد مهام تم أضافتها حتي الأن</span>
+    <br>
+    <button
+          pButton
+          type="button"
+          class="ui-button-success ui-button-rounded"
+          routerLink = "/newtask"
+          style="width: 30%;height: 50px; padding-top: 10px;font-size: 18px;"
+        >
+          أضف مهمتك الأن
+        </button>
+
+  </div>
+  <ul [ngStyle]="{ opacity: tasklist == null ? '0' : '1' }" #tasks>
+    <li>
+      <span>الأسم</span>
+      <span>الوصف</span>
+      <span>الحالة</span>
+      <span>تعديل</span>
+    </li>
+    <li
+      *ngFor="let task of tasklist | sortTaskList; let i = index"
+      [ngStyle]="{
+        'background-color':
+          task['status'] == 'تم الأنتهاء'
+            ? 'rgba(0, 225, 20, 0.433)'
+            : 'rgba(232, 253, 45, 0.349)'
+      }"
+    >
+      <span>
+        {{ task["title"] | shortenString }}
+      </span>
+      <span>
+        {{ task["desc"] | shortenString }}
+      </span>
+      <span>
+        {{ task["status"] }}
+      </span>
+      <span>
+        <mat-icon class="edit" (click)="showDialog(task['id'], task['createdDate'])" styleClass="mydialog"
+          >create</mat-icon
+        >
+      </span>
+    </li>
+  </ul>
+</div>
+
+<div class="ui-rtl" dir="rtl">
+  <p-dialog
+    [(visible)]="displayModal"
+    [transitionOptions]="'200ms'"
+    maximizable="true"
+  >
+    <p-header>
+      تعديل المهمة
+    </p-header>
+    <form [formGroup]="modalForm">
+      <div class="title">
+        <label for="title">أسم المهمة</label>
+        <input type="text" name="title" pInputText [pKeyFilter]="arabic" formControlName="title"/>
+      </div>
+      <br />
+      <div class="desc">
+        <label for="desc">وصف المهمة</label>
+        <input type="text" name="desc" pInputText [pKeyFilter]="arabic" formControlName="desc"/>
+      </div>
+      <br />
+      <div class="status">
+        <label for="desc">حالة المهمة</label>
+        <p-radioButton
+          name="groupname"
+          value="لم ينتهي"
+          label="لم ينتهي"
+          formControlName="status"
+        ></p-radioButton>
+        <p-radioButton
+          name="groupname"
+          value="تم الأنتهاء"
+          label="تم الأنتهاء"
+          formControlName="status"
+        ></p-radioButton>
+      </div>
+    </form>
+
+    <p-footer>
+      <div class="btns">
+        <button
+          pButton
+          type="button"
+          class="ui-button-danger ui-button-rounded"
+          (click) = "deleteTask()"
+        >
+          حذف المهمة
+        </button>
+        <span class="warnArabic">تأكد أن لوحة المفاتيح باللغة العربية</span>
+        <button
+          pButton
+          type="submit"
+          class="ui-button-success ui-button-rounded"
+          (click) = "onSubmit()"
+        >
+          حفظ التعديل
+        </button>
+      </div>
+    </p-footer>
+  </p-dialog>
+</div>

@@ -1,0 +1,21 @@
+<mat-toolbar>
+
+
+  <div class="logo">
+    <h2>دونها</h2>
+  </div>
+
+
+  <div class="toggleMenu" *ngIf="isAuth()">
+    <mat-icon (click)="visibleSidebar = true">notes</mat-icon>
+  </div>
+
+  <p-sidebar [(visible)]="visibleSidebar" position="right" [baseZIndex]="10000">
+    <ul>
+      <li [routerLink]="['/tasklist']" routerLinkActive="activeLi"  >قائمة المهام</li>
+      <li [routerLink]="['/newtask']" routerLinkActive="activeLi"  >أضافة مهمة</li>
+      <li (click)="onLogout()">تسجيل خروج</li>
+    </ul>
+  </p-sidebar>
+
+</mat-toolbar>

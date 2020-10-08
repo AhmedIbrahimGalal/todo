@@ -1,0 +1,42 @@
+<div class="signup" dir="rtl">
+  <h3>أنشئ حسابك الأن</h3>
+  <form (ngSubmit)="onSignup()" [formGroup]="form">
+    <input
+      type="email"
+      name="email"
+      id="email"
+      placeholder="أدخل البريد الالكتروني"
+      formControlName="email"
+    />
+    <br />
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="أدخل كلمة المرور"
+      formControlName="password"
+      pTooltip="يجب ألا تقل كلمة المرور عن 6 احرف او ارقام"
+      tooltipPosition="bottom"
+      tooltipEvent="hover"
+      showDelay="200"
+      hideDelay="1000"
+    />
+    <br />
+    <button
+      pButton
+      type="submit"
+      class="ui-button-success"
+      label="أنشاء حساب"
+      [disabled]="!form.valid"
+    ></button>
+    <br />
+    <p style="font-weight:600">أذا كان معك حساب مسبق أضغط بالأسفل</p>
+    <button
+      pButton
+      type="button"
+      class="ui-button-raised"
+      label="تسجيل الدخول"
+      routerLink="/login"
+    ></button>
+  </form>
+</div>

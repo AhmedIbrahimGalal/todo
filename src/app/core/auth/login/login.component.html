@@ -1,0 +1,39 @@
+<div class="login">
+  <h3>تسجيل الدخول</h3>
+  <form (ngSubmit)="onSignin()" [formGroup]="form">
+    <input
+      type="email"
+      name="email"
+      id="email"
+      required
+      placeholder="أدخل البريد الالكتروني"
+      formControlName="email"
+    />
+    <br />
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="أدخل كلمة المرور"
+      formControlName="password"
+    />
+    <br/>
+    <button
+      pButton
+      type="submit"
+      class="ui-button-success"
+      label="تسجيل الدخول"
+      [disabled]="!form.valid"
+    ></button>
+    <br>
+    <p>أذا كنت لا تمتلك حساب فلا تنتظر وانضم للعائلة</p>
+    <br>
+    <button
+      pButton
+      type="button"
+      class="ui-button-raised"
+      label="أنشاء حساب جديد"
+      routerLink="/signup"
+    ></button>
+  </form>
+</div>

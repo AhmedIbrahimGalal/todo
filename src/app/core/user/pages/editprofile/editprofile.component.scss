@@ -1,0 +1,58 @@
+.edit{
+  width: 100%;
+  min-height: 75vh;
+  background-color: #fff;
+  border-left: 4px solid rgb(7, 185, 255);
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .userpic{
+    width: 400px;
+    height: 180px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  .labelImg{
+    width: 160px;
+    height: 160px;
+    border: 2px solid rgb(7, 185, 255);
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    img{
+      border-radius: 50%;
+    }
+    label{
+      position: absolute;
+      width: 80px;
+      height: 30px;
+      color: rgb(7, 143, 255);
+      right: 0px;
+      bottom: 20px;
+      border: 2px solid rgb(7, 143, 255);
+      font-size: 16px;
+      text-align: center;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+  }
+  }
+  .userInfo{
+    width: 100%;
+    .drop{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      .dropd{
+        width: 30%;
+      }
+    }
+
+  }
+}

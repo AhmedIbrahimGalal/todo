@@ -1,0 +1,36 @@
+<div class="new-task">
+  <h3>مهمتك</h3>
+  <hr />
+  <form [formGroup]="newTaskForm" (ngSubmit)="onSubmit()">
+    <div class="first">
+      <mat-form-field appearance="standard" required>
+        <mat-label>الأسم</mat-label>
+        <input matInput formControlName="title" [pKeyFilter]="arabic"/>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>الحالة</mat-label>
+        <mat-select formControlName="status">
+          <mat-option value="لم ينتهي">لم ينتهي</mat-option>
+          <mat-option value="تم الأنتهاء">تم الأنتهاء</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <br />
+    <mat-form-field appearance="standard" class="desc">
+      <mat-label>الوصف</mat-label>
+      <textarea matInput formControlName="desc" [pKeyFilter]="arabic"></textarea>
+    </mat-form-field>
+    <div class="error" *ngIf="!newTaskForm.valid">
+      يجب أن تملئ كل الخانات في الاعلي ويجب التأكد أن لوحة المفاتيح باللغة العربية
+    </div>
+    <button
+      mat-raised-button
+      color="primary"
+      class="btn"
+      [disabled]="!newTaskForm.valid"
+      type="submit"
+    >
+      أضافة مهمة
+    </button>
+  </form>
+</div>
